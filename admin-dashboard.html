@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Admin Dashboard - প্রতিভা কোচিং সেন্টার</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f6f9;
+    }
+
+    header {
+      background: #1769aa;
+      color: white;
+      padding: 20px;
+    }
+
+    .header-content {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-content h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .logout {
+      background: #d32f2f;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 25px auto;
+      padding: 15px;
+    }
+
+    .welcome {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .student-box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .student-form {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+
+    .add-btn {
+      grid-column: 1 / -1;
+      background: #1769aa;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      margin-top: 25px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 650px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background: #1769aa;
+      color: white;
+    }
+
+    .delete-btn {
+      background: #d32f2f;
+      color: white;
+      border: none;
+      padding: 7px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+
+      .student-form {
+        grid-template-columns: 1fr;
+      }
+
+      .add-btn {
+        grid-column: auto;
+      }
+
+      .header-content {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+  <div class="header-content">
+
+    <h1>
+      প্রতিভা কোচিং সেন্টার — Admin Dashboard
+    </h1>
+
+    <button class="logout" onclick="logout()">
+      Logout
+    </button>
+
+  </div>
+
+</header>
+
+
+
+<div class="container">
+
+
+  <div class="welcome">
+
+    <h2>
+      Admin Dashboard
+    </h2>
+
+    <p>
+      এখান থেকে শিক্ষার্থীদের তথ্য পরিচালনা করতে পারবেন।
+    </p>
+
+  </div>
+
+
+
+  <div class="student-box">
+
+    <h2>
+      নতুন শিক্ষার্থী যোগ করুন
+    </h2>
+
+
+    <div class="student-form">
+
+      <input
+        type="text"
+        id="name"
+        placeholder="শিক্ষার্থীর নাম"
+      >
+
+      <input
+        type="text"
+        id="phone"
+        placeholder="মোবাইল নম্বর"
+      >
+
+      <input
+        type="text"
+        id="className"
+        placeholder="ক্লাস"
+      >
+
+      <input
+        type="number"
+        id="fee"
+        placeholder="ব্যাচ ফি"
+      >
+
+      <button
+        class="add-btn"
+        onclick="addStudent()"
+      >
+        + শিক্ষার্থী যোগ করুন
+      </button>
+
+    </div>
+
+
+
+    <h2 style="margin-top:30px;">
+      শিক্ষার্থীদের তালিকা
+    </h2>
+
+
+    <div class="table-wrapper">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>নাম</th>
+
+            <th>ফোন</th>
+
+            <th>ক্লাস</th>
+
+            <th>ব্যাচ ফি</th>
+
+            <th>Action</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody id="studentList">
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<script>
+
+
+function addStudent() {
+
+  const name =
+    document.getElementById("name").value.trim();
+
+  const phone =
+    document.getElementById("phone").value.trim();
+
+  const className =
+    document.getElementById("className").value.trim();
+
+  const fee =
+    document.getElementById("fee").value.trim();
+
+
+  if (!name || !phone || !className || !fee) {
+
+    alert("সব তথ্য পূরণ করুন।");
+
+    return;
+
+  }
+
+
+  const table =
+    document.getElementById("studentList");
+
+
+  const row =
+    table.insertRow();
+
+
+  row.insertCell(0).textContent =
+    name;
+
+  row.insertCell(1).textContent =
+    phone;
+
+  row.insertCell(2).textContent =
+    className;
+
+  row.insertCell(3).textContent =
+    fee;
+
+
+  const action =
+    row.insertCell(4);
+
+
+  const button =
+    document.createElement("button");
+
+
+  button.textContent =
+    "Delete";
+
+  button.className =
+    "delete-btn";
+
+
+  button.onclick =
+    function() {
+
+      row.remove();
+
+    };
+
+
+  action.appendChild(button);
+
+
+  document.getElementById("name").value = "";
+
+  document.getElementById("phone").value = "";
+
+  document.getElementById("className").value = "";
+
+  document.getElementById("fee").value = "";
+
+}
+
+
+
+function logout() {
+
+  window.location.href = "admin.html";
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
