@@ -1,55 +1,55 @@
 <!DOCTYPE html>
 <html lang="bn">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Student Login - Protiva Coaching Center</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+  <style>
     body {
-      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f2f5f9;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      padding: 20px;
+      min-height: 100vh;
     }
 
     .login-box {
-      width: 100%;
+      width: 90%;
       max-width: 400px;
       background: white;
       padding: 30px;
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+      box-sizing: border-box;
     }
 
     .logo {
       text-align: center;
-      font-size: 28px;
+      font-size: 25px;
       font-weight: bold;
-      color: #5a3db8;
+      color: #0b5ed7;
       margin-bottom: 8px;
     }
 
     .subtitle {
       text-align: center;
-      color: #777;
+      color: #555;
       margin-bottom: 25px;
+      font-size: 18px;
     }
 
     label {
       display: block;
+      margin-top: 15px;
       margin-bottom: 7px;
       font-weight: bold;
-      color: #333;
     }
 
     input {
@@ -57,29 +57,24 @@
       padding: 13px;
       border: 1px solid #ccc;
       border-radius: 8px;
-      margin-bottom: 18px;
+      box-sizing: border-box;
       font-size: 16px;
-      outline: none;
-    }
-
-    input:focus {
-      border-color: #667eea;
     }
 
     button {
       width: 100%;
+      margin-top: 25px;
       padding: 13px;
       border: none;
       border-radius: 8px;
-      background: #5a3db8;
+      background: #0b5ed7;
       color: white;
       font-size: 17px;
-      font-weight: bold;
       cursor: pointer;
     }
 
     button:hover {
-      background: #432b91;
+      background: #084298;
     }
 
     #message {
@@ -94,9 +89,8 @@
     }
 
     .back a {
-      color: #5a3db8;
       text-decoration: none;
-      font-weight: bold;
+      color: #0b5ed7;
     }
   </style>
 </head>
@@ -106,10 +100,7 @@
   <div class="login-box">
 
     <div class="logo">প্রতিভা কোচিং সেন্টার</div>
-
-    <div class="subtitle">
-      Student Login
-    </div>
+    <div class="subtitle">Student Login</div>
 
     <form id="loginForm">
 
@@ -129,9 +120,7 @@
         required
       >
 
-      <button type="submit">
-        Login
-      </button>
+      <button type="submit">Login</button>
 
     </form>
 
@@ -144,29 +133,90 @@
   </div>
 
   <script>
-    document.getElementById("loginForm").addEventListener("submit", function(e) {
 
-      e.preventDefault();
+    const SUPABASE_URL =
+      "https://blzozhkeyrsnwjegymnp.supabase.co";
 
-      const phone = document.getElementById("phone").value.trim();
-      const password = document.getElementById("password").value.trim();
-      const message = document.getElementById("message");
+    const SUPABASE_KEY =
+      "sb_publishable_47dVxHv7GBIxSaZQ9F1sYg_7As1yWm3";
 
-      if (phone === "" || password === "") {
-        message.style.color = "red";
-        message.innerText = "সব তথ্য পূরণ করুন।";
-        return;
-      }
+    const supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
 
-      /*
-        পরবর্তী ধাপে এখানে Students Database
-        এর সাথে Login যুক্ত করা হবে।
-      */
+    document
+      .getElementById("loginForm")
+      .addEventListener("submit", async function(e) {
 
-      message.style.color = "green";
-      message.innerText = "Login system প্রস্তুত করা হচ্ছে...";
+        e.preventDefault();
 
-    });
+        const phone =
+          document.getElementById("phone").value.trim();
+
+        const password =
+          document.getElementById("password").value.trim();
+
+        const message =
+          document.getElementById("message");
+
+        message.style.color = "#333";
+        message.innerText = "Login হচ্ছে...";
+
+        try {
+
+          const { data, error } =
+            await supabaseClient
+              .from("Students")
+              .select("*")
+              .eq("Phone", phone)
+              .eq("Password", password)
+              .maybeSingle();
+
+          if (error) {
+            console.error(error);
+
+            message.style.color = "red";
+            message.innerText =
+              "ডাটাবেজের সাথে সংযোগে সমস্যা হয়েছে।";
+
+            return;
+          }
+
+          if (!data) {
+
+            message.style.color = "red";
+            message.innerText =
+              "মোবাইল নম্বর অথবা পাসওয়ার্ড ভুল।";
+
+            return;
+          }
+
+          localStorage.setItem(
+            "studentData",
+            JSON.stringify(data)
+          );
+
+          message.style.color = "green";
+          message.innerText =
+            "Login সফল হয়েছে!";
+
+          setTimeout(function() {
+            window.location.href = "student-dashboard.html";
+          }, 1000);
+
+        } catch (err) {
+
+          console.error(err);
+
+          message.style.color = "red";
+          message.innerText =
+            "কিছু সমস্যা হয়েছে। আবার চেষ্টা করুন।";
+        }
+
+      });
+
   </script>
 
 </body>
