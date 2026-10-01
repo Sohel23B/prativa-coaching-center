@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - প্রতিভা কোচিং সেন্টার</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f5f9;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-box {
+      width: 92%;
+      max-width: 400px;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.12);
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo h1 {
+      color: #1769aa;
+      margin-bottom: 5px;
+    }
+
+    .logo p {
+      color: #666;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccc;
+      border-radius: 7px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 13px;
+      margin-top: 20px;
+      background: #1769aa;
+      color: white;
+      border: none;
+      border-radius: 7px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0d4f82;
+    }
+
+    #error {
+      color: #d32f2f;
+      text-align: center;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="login-box">
+
+  <div class="logo">
+    <h1>প্রতিভা কোচিং সেন্টার</h1>
+    <p>Admin Login</p>
+  </div>
+
+  <label>Username</label>
+
+  <input
+    type="text"
+    id="username"
+    placeholder="Username"
+  >
+
+  <label>Password</label>
+
+  <input
+    type="password"
+    id="password"
+    placeholder="Password"
+  >
+
+  <button onclick="login()">
+    Login
+  </button>
+
+  <p id="error"></p>
+
+</div>
+
+
+<script>
+
+function login() {
+
+  const username =
+    document.getElementById("username").value;
+
+  const password =
+    document.getElementById("password").value;
+
+
+  /*
+    আপাতত পরীক্ষার জন্য:
+    Username: admin
+    Password: 123456
+  */
+
+  if (
+    username === "admin" &&
+    password === "123456"
+  ) {
+
+    window.location.href = "admin-dashboard.html";
+
+  } else {
+
+    document.getElementById("error").textContent =
+      "Username অথবা Password ভুল!";
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
