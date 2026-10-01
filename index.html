@@ -10,964 +10,353 @@
 
   <title>প্রতিভা কোচিং সেন্টার</title>
 
-  <link rel="stylesheet" href="style.css">
-
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    /* =========================
-       STUDENT SECTION
-    ========================= */
+    body {
+      font-family: Arial, "Noto Sans Bengali", sans-serif;
+      background: #f4f7fb;
+      color: #222;
+      line-height: 1.6;
+    }
 
-    .student-box {
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #075e54, #0b8f7b);
+      color: white;
+      padding: 18px 15px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 30px;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      font-size: 16px;
+    }
+
+    /* Navigation */
+    nav {
       background: white;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-      margin-top: 25px;
-    }
-
-    .student-table-wrapper {
-      overflow-x: auto;
-      margin-top: 10px;
-    }
-
-    .student-table {
-      width: 100%;
-      min-width: 600px;
-      border-collapse: collapse;
-    }
-
-    .student-table th,
-    .student-table td {
-      border: 1px solid #ddd;
       padding: 12px;
       text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    .student-table th {
-      background: #1769aa;
-      color: white;
+    nav a {
+      display: inline-block;
+      margin: 5px 8px;
+      padding: 9px 14px;
+      color: #075e54;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
     }
 
-    .student-empty {
+    nav a:hover {
+      background: #e7f5f2;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 55px 20px;
       text-align: center;
-      padding: 25px;
-      color: #777;
+      background: linear-gradient(135deg, #e8f8f5, #ffffff);
     }
 
+    .hero h2 {
+      font-size: 32px;
+      color: #075e54;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      max-width: 750px;
+      margin: auto;
+      color: #444;
+    }
+
+    /* Login Button */
+    .login-btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 14px 28px;
+      background: #0b5ed7;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .login-btn:hover {
+      background: #084298;
+    }
+
+    /* Sections */
+    section {
+      padding: 45px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      color: #075e54;
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      color: #075e54;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #555;
+    }
+
+    /* About */
+    .about {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    /* Contact */
+    .contact-box {
+      background: #075e54;
+      color: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .contact-box h3 {
+      font-size: 25px;
+      margin-bottom: 15px;
+    }
+
+    .contact-box p {
+      margin: 8px 0;
+      font-size: 17px;
+    }
+
+    /* Footer */
+    footer {
+      background: #123;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+    }
+
+    footer p {
+      margin: 5px 0;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+
+      header h1 {
+        font-size: 25px;
+      }
+
+      .hero h2 {
+        font-size: 25px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      nav a {
+        font-size: 14px;
+        padding: 7px 9px;
+        margin: 3px;
+      }
+
+      section {
+        padding: 30px 15px;
+      }
+    }
   </style>
-
 </head>
-
 
 <body>
 
+  <!-- Header -->
+  <header>
+    <h1>প্রতিভা কোচিং সেন্টার</h1>
+    <p>সুশিক্ষা • নিয়মিত পাঠদান • উজ্জ্বল ভবিষ্যৎ</p>
+  </header>
 
-<!-- =========================
-     HEADER
-========================= -->
+  <!-- Navigation -->
+  <nav>
+    <a href="#home">হোম</a>
+    <a href="#about">আমাদের সম্পর্কে</a>
+    <a href="#courses">কোর্স</a>
+    <a href="#contact">যোগাযোগ</a>
+    <a href="student-login.html">🎓 Student Login</a>
+  </nav>
 
-<header class="header">
+  <!-- Hero -->
+  <div class="hero" id="home">
 
-  <div class="container nav">
+    <h2>প্রতিভা কোচিং সেন্টারে স্বাগতম</h2>
 
-    <a class="brand" href="#home">
+    <p>
+      শিক্ষার্থীদের নিয়মিত পাঠদান, পরীক্ষার প্রস্তুতি এবং
+      ভালো ফলাফলের জন্য একটি মানসম্মত শিক্ষা প্রতিষ্ঠান।
+    </p>
 
-      <img
-        src="logo.jpg"
-        alt="প্রতিভা কোচিং সেন্টার লোগো"
-      >
-
-      <div>
-
-        <strong>
-          প্রতিভা কোচিং সেন্টার
-        </strong>
-
-        <span>
-          জ্ঞান • দক্ষতা • সাফল্য
-        </span>
-
-      </div>
-
+    <a href="student-login.html" class="login-btn">
+      🎓 Student Login
     </a>
 
-
-    <button
-      class="menu"
-      aria-label="মেনু"
-    >
-      ☰
-    </button>
-
-
-    <nav id="navlinks">
-
-      <a href="#home">
-        হোম
-      </a>
-
-      <a href="#courses">
-        কোর্সসমূহ
-      </a>
-
-      <a href="#why">
-        কেন প্রতিভা
-      </a>
-
-      <a href="#students">
-        শিক্ষার্থী
-      </a>
-
-      <a href="#admission">
-        ভর্তি
-      </a>
-
-      <a href="#founder">
-        প্রতিষ্ঠাতা
-      </a>
-
-      <a href="#contact">
-        যোগাযোগ
-      </a>
-
-    </nav>
-
   </div>
 
-</header>
+  <!-- About -->
+  <section id="about">
 
+    <h2 class="section-title">আমাদের সম্পর্কে</h2>
 
-
-<main>
-
-
-<!-- =========================
-     HOME
-========================= -->
-
-<section id="home" class="hero">
-
-  <div class="container hero-grid">
-
-    <div>
-
-      <div class="badge">
-        🎓 নতুন ব্যাচে ভর্তি চলছে
-      </div>
-
-
-      <h1>
-
-        শিক্ষার ভিত্তি মজবুত করুন,
-
-        <br>
-
-        <em>
-          সাফল্যের পথে এগিয়ে চলুন।
-        </em>
-
-      </h1>
-
+    <div class="about">
 
       <p>
-
-        ষষ্ঠ–দশম এবং একাদশ–দ্বাদশ শ্রেণির
-        শিক্ষার্থীদের জন্য বিষয়ভিত্তিক
-        যত্নশীল পাঠদান ও নিয়মিত অনুশীলন।
-
+        প্রতিভা কোচিং সেন্টার শিক্ষার্থীদের মানসম্মত শিক্ষা,
+        নিয়মিত পরীক্ষা এবং সঠিক দিকনির্দেশনার মাধ্যমে
+        তাদের শিক্ষাজীবনে সফল হতে সহযোগিতা করে।
       </p>
 
-
-      <div class="buttons">
-
-        <a
-          class="btn primary"
-          href="#admission"
-        >
-          ভর্তি সম্পর্কে জানুন
-        </a>
-
-
-        <a
-          class="btn outline"
-          href="tel:01609743016"
-        >
-          📞 01609743016
-        </a>
-
-      </div>
-
-    </div>
-
-
-
-    <div class="hero-card">
-
-      <img
-        src="logo.jpg"
-        alt="প্রতিভা কোচিং সেন্টার"
-      >
-
-
-      <h3>
-        প্রতিভা কোচিং সেন্টার
-      </h3>
-
+      <br>
 
       <p>
-
-        ইস্পাহানী কলেজ সংলগ্ন,
-
-        <br>
-
-        রামেরকান্দা, কেরানীগঞ্জ, ঢাকা
-
+        এখানে শিক্ষার্থীদের পড়াশোনার পাশাপাশি নিয়মিত
+        মূল্যায়ন ও প্রয়োজনীয় পরামর্শ প্রদান করা হয়।
       </p>
 
     </div>
 
-  </div>
+  </section>
 
-</section>
+  <!-- Courses -->
+  <section id="courses">
 
-
-
-<!-- =========================
-     COURSES
-========================= -->
-
-<section
-  id="courses"
-  class="section"
->
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <span>
-        আমাদের কোর্স
-      </span>
-
-
-      <h2>
-        শ্রেণি ও বিষয়ভিত্তিক পাঠদান
-      </h2>
-
-    </div>
-
-
+    <h2 class="section-title">আমাদের কোর্স</h2>
 
     <div class="cards">
 
-
-      <article class="card">
-
-        <div class="icon">
-          📘
-        </div>
-
-
-        <h3>
-          ৬ষ্ঠ–১০ম শ্রেণি
-        </h3>
-
-
+      <div class="card">
+        <h3>৬ষ্ঠ - ৮ম শ্রেণি</h3>
         <p>
-
-          মাধ্যমিক পর্যায়ের গুরুত্বপূর্ণ
-          বিষয়গুলোতে নিয়মিত ক্লাস ও অনুশীলন।
-
+          বাংলা, ইংরেজি, গণিত ও অন্যান্য গুরুত্বপূর্ণ বিষয়ের
+          নিয়মিত পাঠদান।
         </p>
+      </div>
 
-
-        <ul>
-
-          <li>
-            গণিত
-          </li>
-
-          <li>
-            ইংরেজি
-          </li>
-
-          <li>
-            বিজ্ঞান
-          </li>
-
-        </ul>
-
-      </article>
-
-
-
-      <article class="card featured">
-
-        <div class="icon">
-          🎓
-        </div>
-
-
-        <h3>
-          একাদশ–দ্বাদশ / HSC
-        </h3>
-
-
+      <div class="card">
+        <h3>৯ম - ১০ম শ্রেণি</h3>
         <p>
-
-          উচ্চমাধ্যমিক পর্যায়ে পরীক্ষাভিত্তিক
-          প্রস্তুতি ও বিষয়ভিত্তিক সহায়তা।
-
+          SSC পরীক্ষার প্রস্তুতি, মডেল টেস্ট ও নিয়মিত মূল্যায়ন।
         </p>
+      </div>
 
-
-        <ul>
-
-          <li>
-            ICT
-          </li>
-
-          <li>
-            অর্থনীতি
-          </li>
-
-        </ul>
-
-      </article>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================
-     WHY
-========================= -->
-
-<section
-  id="why"
-  class="section soft"
->
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <span>
-        কেন আমাদের?
-      </span>
-
-
-      <h2>
-        শিক্ষার্থীর অগ্রগতিই আমাদের লক্ষ্য
-      </h2>
-
-    </div>
-
-
-
-    <div class="features">
-
-
-      <div>
-
-        <b>
-          01
-        </b>
-
-
-        <h3>
-          বিষয়ভিত্তিক ক্লাস
-        </h3>
-
-
+      <div class="card">
+        <h3>একাদশ - দ্বাদশ</h3>
         <p>
-
-          প্রতিটি বিষয়ের মৌলিক ধারণা পরিষ্কার
-          করার ওপর গুরুত্ব।
-
+          HSC পরীক্ষার প্রস্তুতি ও বিষয়ভিত্তিক বিশেষ ক্লাস।
         </p>
-
       </div>
 
-
-
-      <div>
-
-        <b>
-          02
-        </b>
-
-
-        <h3>
-          নিয়মিত অনুশীলন
-        </h3>
-
-
+      <div class="card">
+        <h3>বিশেষ ব্যাচ</h3>
         <p>
-
-          ক্লাসওয়ার্ক, হোমওয়ার্ক ও পরীক্ষার
-          মাধ্যমে শেখা যাচাই।
-
+          দুর্বল শিক্ষার্থীদের জন্য বিশেষ যত্ন ও অতিরিক্ত
+          অনুশীলনের ব্যবস্থা।
         </p>
-
       </div>
-
-
-
-      <div>
-
-        <b>
-          03
-        </b>
-
-
-        <h3>
-          পরীক্ষামুখী প্রস্তুতি
-        </h3>
-
-
-        <p>
-
-          বোর্ড পরীক্ষার উপযোগী প্রশ্ন ও
-          সময় ব্যবস্থাপনার অনুশীলন।
-
-        </p>
-
-      </div>
-
-
-
-      <div>
-
-        <b>
-          04
-        </b>
-
-
-        <h3>
-          যত্নশীল পরিবেশ
-        </h3>
-
-
-        <p>
-
-          শিক্ষার্থীদের প্রশ্ন করার সুযোগ ও
-          শেখার জন্য সহায়ক পরিবেশ।
-
-        </p>
-
-      </div>
-
 
     </div>
 
-  </div>
+  </section>
 
-</section>
+  <!-- Student Login Section -->
+  <section>
 
+    <h2 class="section-title">শিক্ষার্থী লগইন</h2>
 
-
-<!-- =========================
-     STUDENTS
-========================= -->
-
-<section
-  id="students"
-  class="section"
->
-
-  <div class="container">
-
-
-    <div class="section-title">
-
-      <span>
-        Students
-      </span>
-
-
-      <h2>
-        শিক্ষার্থীদের তথ্য
-      </h2>
-
-    </div>
-
-
-
-    <div class="student-box">
-
-
-      <div class="student-table-wrapper">
-
-
-        <table class="student-table">
-
-
-          <thead>
-
-            <tr>
-
-              <th>
-                নাম
-              </th>
-
-              <th>
-                ফোন
-              </th>
-
-              <th>
-                ক্লাস
-              </th>
-
-
-            </tr>
-
-          </thead>
-
-
-
-          <tbody id="studentList">
-
-
-            <!--
-              শিক্ষার্থীদের তথ্য
-              এখানে পরে Database থেকে আসবে।
-            -->
-
-
-            <tr>
-
-              <td
-                colspan="4"
-                class="student-empty"
-              >
-
-                বর্তমানে কোনো শিক্ষার্থীর তথ্য
-                প্রদর্শনের জন্য নেই।
-
-              </td>
-
-            </tr>
-
-
-          </tbody>
-
-
-        </table>
-
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================
-     FOUNDER
-========================= -->
-
-<section
-  id="founder"
-  class="section founder-section"
->
-
-  <div class="container founder-grid">
-
-
-    <div class="founder-photo">
-
-      <img
-        src="founder.jpg"
-        alt="প্রতিষ্ঠাতা Sohel Mia"
-      >
-
-    </div>
-
-
-
-    <div>
-
-
-      <div class="section-title left">
-
-        <span>
-          প্রতিষ্ঠাতা
-        </span>
-
-
-        <h2>
-          Sohel Mia
-        </h2>
-
-      </div>
-
-
-
-      <h3 class="degree">
-
-        B.S.S in Economics
-
-      </h3>
-
-
-
-      <p class="founder-text">
-
-        প্রতিভা কোচিং সেন্টারের প্রতিষ্ঠাতা
-        <strong>Sohel Mia</strong>।
-
-        শিক্ষার্থীদের বিষয়ভিত্তিক জ্ঞান,
-        নিয়মিত অনুশীলন এবং পরীক্ষামুখী
-        প্রস্তুতির মাধ্যমে এগিয়ে নেওয়াই
-        আমাদের লক্ষ্য।
-
-      </p>
-
-
-
-      <div class="founder-contact">
-
-        <span>
-          💬 WhatsApp
-        </span>
-
-
-        <a
-          href="https://wa.me/8801609743016"
-          target="_blank"
-        >
-          01609743016
-        </a>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================
-     ADMISSION
-========================= -->
-
-<section
-  id="admission"
-  class="admission"
->
-
-  <div class="container admission-box">
-
-
-    <div>
-
-      <span class="badge light">
-        ভর্তি চলছে
-      </span>
-
-
-      <h2>
-
-        আপনার সন্তানের সুন্দর ভবিষ্যতের জন্য
-        আজই যোগাযোগ করুন
-
-      </h2>
-
+    <div class="about">
 
       <p>
-
-        ভর্তি ও ক্লাসের সময়সূচি জানতে
-        সরাসরি ফোন করুন।
-
+        আপনার ক্লাস, ব্যাচ ও অন্যান্য শিক্ষার্থী তথ্য দেখতে
+        Student Login করুন।
       </p>
 
-    </div>
-
-
-
-    <a
-      class="btn white"
-      href="tel:01609743016"
-    >
-      📞 কল করুন
-    </a>
-
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================
-     CONTACT
-========================= -->
-
-<section
-  id="contact"
-  class="section"
->
-
-  <div class="container contact-grid">
-
-
-    <div>
-
-
-      <div class="section-title left">
-
-        <span>
-          যোগাযোগ
-        </span>
-
-
-        <h2>
-          আমাদের ঠিকানা
-        </h2>
-
-      </div>
-
-
-
-      <div class="contact-item">
-
-        <span>
-          📍
-        </span>
-
-
-        <div>
-
-          <strong>
-            ঠিকানা
-          </strong>
-
-
-          <p>
-
-            ব্যাংক এশিয়া, ৪র্থ তলা,
-
-            <br>
-
-            (ইস্পাহানী কলেজ সংলগ্ন),
-            রামেরকান্দা,
-
-            <br>
-
-            কেরানীগঞ্জ, ঢাকা।
-
-          </p>
-
-        </div>
-
-      </div>
-
-
-
-      <div class="contact-item">
-
-        <span>
-          📞
-        </span>
-
-
-        <div>
-
-          <strong>
-            মোবাইল / WhatsApp
-          </strong>
-
-
-          <p>
-
-            <a href="tel:01609743016">
-              01609743016
-            </a>
-
-            ·
-
-            <a
-              href="https://wa.me/8801609743016"
-              target="_blank"
-            >
-              WhatsApp
-            </a>
-
-          </p>
-
-        </div>
-
-      </div>
-
-
-    </div>
-
-
-
-    <div class="map-card">
-
-      <div class="map-icon">
-        📍
-      </div>
-
-
-      <h3>
-        রামেরকান্দা, কেরানীগঞ্জ
-      </h3>
-
-
-      <p>
-
-        ইস্পাহানী কলেজ সংলগ্ন
-        • ব্যাংক এশিয়া, ৪র্থ তলা
-
-      </p>
-
-
-      <a
-        class="btn primary"
-        target="_blank"
-        href="https://www.google.com/maps/search/?api=1&query=Bank+Asia+Ramerkanda+Keraniganj+Dhaka"
-      >
-        Google Maps-এ দেখুন
+      <a href="student-login.html" class="login-btn">
+        🔐 Student Login
       </a>
 
-
     </div>
 
-  </div>
+  </section>
 
-</section>
+  <!-- Contact -->
+  <section id="contact">
 
+    <h2 class="section-title">যোগাযোগ</h2>
 
-</main>
+    <div class="contact-box">
 
+      <h3>প্রতিভা কোচিং সেন্টার</h3>
 
-
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
-  <div class="container footer">
-
-
-    <div>
-
-      <strong>
-        প্রতিভা কোচিং সেন্টার
-      </strong>
-
+      <p>📞 যোগাযোগ: 01609743016</p>
 
       <p>
-        জ্ঞান • দক্ষতা • সাফল্য
+        📍 ইস্পাহানী কলেজ সংলগ্ন, ব্যাংক এশিয়া,
+        ৪র্থ তলা, রামেরকান্দা, কেরানীগঞ্জ
       </p>
 
     </div>
 
+  </section>
 
+  <!-- Footer -->
+  <footer>
 
-    <p>
+    <p>© 2026 প্রতিভা কোচিং সেন্টার</p>
 
-      ©
+    <p>সুশিক্ষাই আমাদের অঙ্গীকার</p>
 
-      <span id="year"></span>
-
-      প্রতিভা কোচিং সেন্টার।
-
-      সর্বস্বত্ব সংরক্ষিত।
-
-    </p>
-
-
-  </div>
-
-</footer>
-
-
-
-<!-- =========================
-     FLOATING CALL BUTTON
-========================= -->
-
-<a
-  class="float-call"
-  href="tel:01609743016"
-  aria-label="কল করুন"
->
-  ☎
-</a>
-
-
-
-<!-- =========================
-     JAVASCRIPT
-========================= -->
-
-<script>
-
-
-/* =========================
-   CURRENT YEAR
-========================= */
-
-document
-  .getElementById('year')
-  .textContent =
-  new Date().getFullYear();
-
-
-
-/* =========================
-   MOBILE MENU
-========================= */
-
-document
-  .querySelector('.menu')
-  .addEventListener('click', () => {
-
-    document
-      .getElementById('navlinks')
-      .classList
-      .toggle('open');
-
-  });
-
-
-
-document
-  .querySelectorAll('#navlinks a')
-  .forEach(a => {
-
-    a.addEventListener('click', () => {
-
-      document
-        .getElementById('navlinks')
-        .classList
-        .remove('open');
-
-    });
-
-  });
-
-
-</script>
-
+  </footer>
 
 </body>
 
