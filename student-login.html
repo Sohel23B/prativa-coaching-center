@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Login - Protiva Coaching Center</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      padding: 20px;
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 400px;
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .logo {
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      color: #5a3db8;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #777;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 18px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #667eea;
+    }
+
+    button {
+      width: 100%;
+      padding: 13px;
+      border: none;
+      border-radius: 8px;
+      background: #5a3db8;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #432b91;
+    }
+
+    #message {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .back {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .back a {
+      color: #5a3db8;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-box">
+
+    <div class="logo">প্রতিভা কোচিং সেন্টার</div>
+
+    <div class="subtitle">
+      Student Login
+    </div>
+
+    <form id="loginForm">
+
+      <label>মোবাইল নম্বর</label>
+      <input
+        type="tel"
+        id="phone"
+        placeholder="মোবাইল নম্বর লিখুন"
+        required
+      >
+
+      <label>পাসওয়ার্ড</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="পাসওয়ার্ড লিখুন"
+        required
+      >
+
+      <button type="submit">
+        Login
+      </button>
+
+    </form>
+
+    <div id="message"></div>
+
+    <div class="back">
+      <a href="index.html">← মূল পেজে ফিরে যান</a>
+    </div>
+
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+
+      e.preventDefault();
+
+      const phone = document.getElementById("phone").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const message = document.getElementById("message");
+
+      if (phone === "" || password === "") {
+        message.style.color = "red";
+        message.innerText = "সব তথ্য পূরণ করুন।";
+        return;
+      }
+
+      /*
+        পরবর্তী ধাপে এখানে Students Database
+        এর সাথে Login যুক্ত করা হবে।
+      */
+
+      message.style.color = "green";
+      message.innerText = "Login system প্রস্তুত করা হচ্ছে...";
+
+    });
+  </script>
+
+</body>
+</html>
